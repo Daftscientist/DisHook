@@ -5,4 +5,4 @@ A small, lightweight discord web-hook API wrapper. Made with Python.
 
 #### - Gotta fix timestamps btw.
 #### - Add more validations checks for URLs.
-#### - It's currently ASYNC, this will be an option in the final version. I.e. from DisHook.Async import App or from DisHook.Sync import App
+#### - It's currently SYNC, this will be an option in the final version. I.e. from DisHook.Async import App or from DisHook.Sync import App
