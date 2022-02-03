@@ -1,11 +1,21 @@
 import DisHook 
 from DisHook import embed
 
-webhook = DisHook.App("https://discord.com/api/webhooks/925455555802300467/thZBietLUMcTusvleDX_D805i8JaamF8dh_Y7UanxecA2EcttzULKi4f_K_rlfE2H12F")
-
-embed = embed.Generate(
-    title="hello"
+webhook = DisHook.App(
+    "https://discord.com/api/webhooks/936912274218713118/VT_627xIESpVbvdN2OqkM0EIPfm9z2Dt8N5dK5nneh44zQfEiQUZ7XhI98X-zYps2HjB",
+    default_username="",
+    default_avatar_url=""
 )
 
-result = webhook.send()
+myField = embed.Field(name="hi", value="lol")
+
+embed = embed.Generate(
+    title="hello",
+    description="hiiiii",
+    fields=[myField]
+)
+
+print(embed.title)
+
+result = webhook.send(content="raw message", embeds=[embed])
 print(result.json())

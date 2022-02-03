@@ -20,7 +20,9 @@ class Attachment(BaseModel):
     ephemeral: Optional[bool] = None
 
 class App(object):
-    def __init__(self, webhook_url: str) -> None:
+    def __init__(self, webhook_url: str, default_username: str = None, default_avatar_url: str = None) -> None:
+        self.default_username = default_username
+        self.default_avatar = default_avatar_url
         self.webhook_url = webhook_url
 
     def send(self, username: str = None, avatar_url: str = None, content: str = "", tts: bool=False, embeds: List[embed.Generate] = {}, allowed_mentions: AllowedMentions = {}, attachments: List[Attachment] = {}):
