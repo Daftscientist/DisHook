@@ -51,8 +51,23 @@ class Author(BaseModel):
 class Mentions(BaseModel):
     pass
 
+class Tag(BaseModel):
+    bot_id: str
+    integration_id: str
+    premium_subscriber: str
+
 class MentionRoles(BaseModel):
-    pass
+    id: int
+    name: str
+    color: int
+    hoist: bool
+    icon: Optional[str]
+    unicode_emoji: Optional[str]
+    position: int
+    permissions: str
+    managed: bool
+    mentionable: bool
+    tags: Optional[List[Tag]]
 
 """
 {'id': '940340878508195870', 'type': 0, 'content': 'test.', 'channel_id': '927846152810954763', 
