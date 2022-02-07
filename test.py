@@ -1,21 +1,12 @@
 import DisHook 
-from DisHook import embed
+from DisHook import embed, helpers
 
 webhook = DisHook.App(
-    "https://discord.com/api/webhooks/936912274218713118/VT_627xIESpVbvdN2OqkM0EIPfm9z2Dt8N5dK5nneh44zQfEiQUZ7XhI98X-zYps2HjB",
+    "https://discord.com/api/webhooks/939948451360292894/ii-uwpM3qYHfckbDLuvxBaRQDbRcIVPBIOmAjer8QClhnJVU_kT74daEcsp90WP2jTH1",
     default_username="",
     default_avatar_url=""
 )
 
-myField = embed.Field(name="hi", value="lol")
 
-embed = embed.Generate(
-    title="hello",
-    description="hiiiii",
-    fields=[myField]
-)
-
-print(embed.title)
-
-result = webhook.send(content="raw message", embeds=[embed])
-print(result.json())
+result = webhook.send(content="`@everyone`", embeds=[embed.Generate(description="wumpus dumb")])
+print(result)

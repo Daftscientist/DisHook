@@ -1,7 +1,22 @@
 from datetime import datetime
-from optparse import Option
 from pydantic import BaseModel
 from typing import List, Optional
+from DisHook import embed
+
+class AllowedMentions(BaseModel):
+    pass
+
+class Attachment(BaseModel):
+    id: int
+    filename: str
+    description: Optional[str] = None
+    content_type: Optional[str] = None
+    size: int
+    url: str
+    proxy_url: str
+    height: Optional[int] = None
+    width: Optional[int] = None
+    ephemeral: Optional[bool] = None
 
 class User(BaseModel):
     id: int
@@ -26,16 +41,42 @@ class Guild(BaseModel):
 class Channel(BaseModel):
     ...
 
+class Author(BaseModel):
+    bot: bool
+    id: int
+    username: str
+    avatar: str
+    discriminator: int
+
+class Mentions(BaseModel):
+    pass
+
+class MentionRoles(BaseModel):
+    pass
+
+"""
+{'id': '940340878508195870', 'type': 0, 'content': 'test.', 'channel_id': '927846152810954763', 
+'author': {'bot': True, 'id': '939948451360292894', 'username': 'daft webhook lmao', 'avatar': 'e3cba282b2980421ad44a9b0aefbaed9',
+ 'discriminator': '0000'}, 'attachments': [], 'embeds': [], 'mentions': [], 'mention_roles': [], 
+ 'pinned': False, 'mention_everyone': False, 'tts': False, 'timestamp': '2022-02-07T20:18:56.125000+00:00', 
+ 'edited_timestamp': None, 'flags': 0, 'components': [], 'webhook_id': '939948451360292894'}
+"""
+
 class Webhook(BaseModel):
     id: int
-    type: str
-    guild_id: Optional[int] = None
+    type: int
+    content: str
     channel_id: int
-    user: Optional[User] = None
-    name: str
-    avatar: str
-    token: Optional[str] = None
-    application_id: int
-    source_guild: Optional[Guild] = None
-    source_channel: Optional[Channel] = None
-    url: Optional[str] = None
+    author: Author
+    attachments: Optional[List[Attachment]] = []
+    embeds: Optional[List[embed.Generate]] = []
+    mentions: Optional[List[Mentions]] = []
+    mention_roles: Optional[List[MentionRoles]] = []
+    pinned: bool
+    mention_everyone: bool
+    tts: bool
+    timestamp: str
+    edited_timestamp: Optional[str] = None
+    flags: int
+    components: list
+    webhook_id: int

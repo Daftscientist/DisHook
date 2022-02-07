@@ -1,23 +1,8 @@
 import requests
 import json
-from DisHook import embed, exceptions
+from DisHook import embed, exceptions, helpers
 from pydantic import BaseModel
 from typing import List, Optional
-
-class AllowedMentions(BaseModel):
-    pass
-
-class Attachment(BaseModel):
-    id: int
-    filename: str
-    description: Optional[str] = None
-    content_type: Optional[str] = None
-    size: int
-    url: str
-    proxy_url: str
-    height: Optional[int] = None
-    width: Optional[int] = None
-    ephemeral: Optional[bool] = None
 
 class App(object):
     def __init__(self, webhook_url: str, default_username: str = None, default_avatar_url: str = None) -> None:
@@ -25,7 +10,7 @@ class App(object):
         self.default_avatar = default_avatar_url
         self.webhook_url = webhook_url
 
-    def send(self, username: str = None, avatar_url: str = None, content: str = "", tts: bool=False, embeds: List[embed.Generate] = {}, allowed_mentions: AllowedMentions = {}, attachments: List[Attachment] = {}):
+    def send(self, username: str = None, avatar_url: str = None, content: str = "", tts: bool=False, embeds: List[embed.Generate] = {}, allowed_mentions: helpers.AllowedMentions = {}, attachments: List[helpers.Attachment] = {}):
         internalEmbeds = []
         for item in embeds:
             internalEmbeds.append(json.loads(item.json()))
@@ -44,4 +29,6 @@ class App(object):
         result = requests.post(f"{self.webhook_url}?wait=true", json=data)
         if result.json() == {'message': 'Cannot send an empty message', 'code': 50006}:
             raise exceptions.EmptyMessage("You can't send an empty message.")
-        return result
+        else:
+            thing = result.json()
+        return helpers.Webhook(**thing)
