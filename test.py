@@ -2,11 +2,22 @@ import DisHook
 from DisHook import embed, helpers
 
 webhook = DisHook.App(
-    "https://discord.com/api/webhooks/939948451360292894/ii-uwpM3qYHfckbDLuvxBaRQDbRcIVPBIOmAjer8QClhnJVU_kT74daEcsp90WP2jTH1",
+    "",
     default_username="",
     default_avatar_url=""
 )
 
 
-result = webhook.send(content="`@everyone`", embeds=[embed.Generate(description="wumpus dumb")])
-print(result)
+myWebhook = webhook.send(content="Hello! I am a webhook!")
+## Sending the initial webhook.
+
+print(webhook.get(myWebhook.id).content)
+## Fetching the webhook
+webhook.edit(myWebhook.id, content="Bye! I am an edited webhook")
+## Editing the webhook
+print(webhook.get(myWebhook.id).content)
+## Fetching the webhook
+webhook.delete(myWebhook.id)
+## Deleting the webhook
+
+## This will be updated to work like myWebhook.edit and myWebhook.delete later.

@@ -45,7 +45,7 @@ class Author(BaseModel):
     bot: bool
     id: int
     username: str
-    avatar: str
+    avatar: Optional[str]
     discriminator: int
 
 class Mentions(BaseModel):
