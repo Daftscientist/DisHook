@@ -1,9 +1,8 @@
 import DisHook 
-from DisHook import embed, helpers
 
 webhook = DisHook.App(
-    "",
-    default_username="",
+    "https://discord.com/api/webhooks/",
+    default_username="isa is gay",
     default_avatar_url=""
 )
 
