@@ -2,7 +2,7 @@
   "email": "leo@kraata.com",
   "password": "hashedpass",
   "avatarUrl": "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
-  "apiToken": [{"name": "test token", "id": 1 "totalReq": "100", "dateCreated": "21/07/2022", "maxReq": "1000"}],
+  "apiToken": [{"name": "test token", "id": 1, "totalReq": "100", "dateCreated": "21/07/2022", "maxReq": "1000"}],
   "currentPlan": "free",
   "overallData": {"todayRequests": "0/3000", "tokensCreated": "0/3", "amountTokensDisabled": "0/3"}
 }
