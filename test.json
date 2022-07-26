@@ -9,7 +9,7 @@
       "users": 0,
       "requests": 1000,
       "amt": 100,
-      "audit": [{"action": "", "desc": "", "time": str}],
+      "audit": [{"action": "", "desc": "", "time": ""}],
       "excess": false,
   },
   "paying": false,
