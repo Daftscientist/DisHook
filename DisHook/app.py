@@ -1,6 +1,9 @@
-import requests
+""" DisHook, A lightweight  """
+
 import json
+import requests
 from DisHook import embed, exceptions, helpers
+from helpers import Request
 from pydantic import BaseModel
 from typing import List, Optional
 
@@ -9,7 +12,7 @@ class App(object):
         self.default_username = default_username
         self.default_avatar = default_avatar_url
         self.webhook_url = webhook_url
-
+    @classmethod
     def send(self, username: str = None, avatar_url: str = None, content: str = "", tts: bool=False, embeds: List[embed.Generate] = {}, allowed_mentions: helpers.AllowedMentions = {}, attachments: List[helpers.Attachment] = {}):
         internalEmbeds = []
         for item in embeds:
@@ -26,12 +29,8 @@ class App(object):
             "allowed_mentions": allowed_mentions,
             "attachments": internalAttachments
         }
-        result = requests.post(f"{self.webhook_url}?wait=true", json=data)
-        if result.json() == {'message': 'Cannot send an empty message', 'code': 50006}:
-            raise exceptions.EmptyMessage("You can't send an empty message.")
-        else:
-            thing = result.json()
-        print(thing)
+        result = Request.post(self.webhook_url, "?wait=true", data)
+        thing = result.json()
         return helpers.Webhook(**thing)
 
     def get(self, message_id: int):

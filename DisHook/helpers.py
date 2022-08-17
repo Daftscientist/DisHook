@@ -1,7 +1,8 @@
 from datetime import datetime
 from pydantic import BaseModel
 from typing import List, Optional
-from DisHook import embed
+from DisHook import app, embed, exceptions
+import requests
 
 class AllowedMentions(BaseModel):
     pass
@@ -69,15 +70,7 @@ class MentionRoles(BaseModel):
     mentionable: bool
     tags: Optional[List[Tag]]
 
-"""
-{'id': '940340878508195870', 'type': 0, 'content': 'test.', 'channel_id': '927846152810954763', 
-'author': {'bot': True, 'id': '939948451360292894', 'username': 'daft webhook lmao', 'avatar': 'e3cba282b2980421ad44a9b0aefbaed9',
- 'discriminator': '0000'}, 'attachments': [], 'embeds': [], 'mentions': [], 'mention_roles': [], 
- 'pinned': False, 'mention_everyone': False, 'tts': False, 'timestamp': '2022-02-07T20:18:56.125000+00:00', 
- 'edited_timestamp': None, 'flags': 0, 'components': [], 'webhook_id': '939948451360292894'}
-"""
-
-class Webhook(BaseModel):
+class Webhook(BaseModel):        
     id: int
     type: int
     content: str
@@ -95,3 +88,16 @@ class Webhook(BaseModel):
     flags: int
     components: list
     webhook_id: int
+
+class Request():
+    def post(webhookUrl: str, endpoint: str = "", data: dict = {}):
+        url = webhookUrl + endpoint
+        headers = {}
+        cookies = {}
+        result = requests.post(url, data, headers=headers, cookies=cookies)
+        if result.status_code in [200]:
+            return result
+        else:
+            raise exceptions.ErrorInRequest("Error during Discord API request: " + str(result.text))
+    def get(webhookUrl: str, endpoint: str = ""):
+        result = requests.get(webhookUrl + endpoint)
