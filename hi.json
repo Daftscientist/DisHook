@@ -1,0 +1,37 @@
+{
+   "email":"leo@kraata.com",
+   "avatar":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+   "threads":[
+      "updates",
+      "sponsors",
+      "newsfeed"
+   ],
+   "name":"leo",
+   "pd":{
+      "linkable":1,
+      "protection":0,
+      "users":0,
+      "requests":1000,
+      "amt":100,
+      "audit":[
+         {
+            "action":"",
+            "desc":"",
+            "time":""
+         }
+      ],
+      "excess":false
+   },
+   "paying":false,
+   "verified":true,
+   "created_at":"26/07/2022",
+   "updated_at":"26/07/2022",
+   "audit":[
+      {
+         "action":"CREATE",
+         "desc":"Account Initiated",
+         "time":"26/07/2022"
+      }
+   ],
+   "requests":186
+}
