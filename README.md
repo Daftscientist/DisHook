@@ -7,7 +7,7 @@ DisHook is a Python package for creating and managing Discord webhook messages e
 You can install DisHook using pip:
 
 ```
-pip install DisHook
+pip install https://github.com/Daftscientist/DisHook.git
 ```
 
 ## Usage
