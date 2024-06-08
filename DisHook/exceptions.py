@@ -1,5 +1,2 @@
-class EmptyMessage(Exception):
-    pass
-
-class ErrorInRequest(Exception):
+class EmptyWebhook(Exception):
     pass
