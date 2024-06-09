@@ -32,7 +32,7 @@ webhook.send()
 
 <details>
     <summary>Embed</summary>
-<br/>
+
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
 
@@ -87,7 +87,9 @@ webhook.send()
 ```
 
 </details>
+
 ---
+
 <details>
     <summary>Mentions</summary>
 
@@ -109,7 +111,9 @@ webhook.send()
 ```
 
 </details>
+
 ---
+
 <details>
     <summary>Components</summary>
 
@@ -136,7 +140,9 @@ webhook.send()
 ```
 
 </details>
+
 ---
+
 For more usage examples, check out the [examples](examples) directory.
 
 ## Contributing 🤝
