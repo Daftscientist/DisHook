@@ -31,14 +31,7 @@ webhook.send()
 ```
 
 <details>
-
-    <summary>
-        
-        [Embeds](https://github.com/Daftscientist/DisHook/blob/main/examples/embeds.py)
-    
-    </summary>
-
-
+    <summary>Embed</summary>
 
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
@@ -64,7 +57,7 @@ webhook.send()
 </details>
 
 <details>
-    <summary>[Polls](https://github.com/Daftscientist/DisHook/blob/main/examples/polls.py)</summary>
+    <summary>Polls</summary>
 
 ```python
 from DisHook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
@@ -94,7 +87,7 @@ webhook.send()
 </details>
 
 <details>
-    <summary>[Mentions](https://github.com/Daftscientist/DisHook/blob/main/examples/mentions.py)</summary>
+    <summary>Mentions</summary>
 
 ```python
 from DisHook import Webhook, AllowedMentions
@@ -116,7 +109,7 @@ webhook.send()
 </details>
 
 <details>
-    <summary>[Components](https://github.com/Daftscientist/DisHook/blob/main/examples/components.py)</summary>
+    <summary>Components</summary>
 
 ```python
 from DisHook import Webhook, ActionRow, Button
@@ -124,8 +117,6 @@ from DisHook import Webhook, ActionRow, Button
 webhook = Webhook("https://discord.webhook.url")
 
 webhook.set_content("This message has an attached action row! It even has a button!")
-
-""" Components will only function if the webhook has been created by an application. Meaning created by a bot."""
 
 my_button = Button(
     label="Click me!",
