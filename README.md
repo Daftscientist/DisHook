@@ -1,16 +1,27 @@
-# DisHook
+# DisHook 🎣
 
-DisHook is a Python package for creating and managing Discord webhook messages easily.
+DisHook is a small, lightweight Python package for creating and managing Discord webhook messages easily.
 
-## Installation
+![DisHook Logo](https://github.com/Daftscientist/DisHook/raw/main/assets/logo.png)
 
-You can install DisHook using pip:
+## Features ✨
 
+- **Easy Integration**: Simple API for creating and sending Discord webhook messages.
+- **Embed Support**: Build rich embed messages with titles, descriptions, fields, and colors.
+- **Customization**: Control the appearance of your messages with various options.
+- **Lightweight**: Minimalistic design for quick setup and performance.
+
+## Installation 🚀
+
+Install DisHook directly from the GitHub repository using pip:
+
+```bash
+pip install git+https://github.com/Daftscientist/DisHook.git
 ```
-pip install https://github.com/Daftscientist/DisHook.git
-```
 
-## Usage
+## Usage 🛠️
+
+### Simple Example
 
 ```python
 from DisHook import Webhook, Embed
@@ -33,21 +44,49 @@ embed.add_field(name='Field 2', value='Value 2')
 webhook.send(embed)
 ```
 
-## Features
+<details>
+  <summary>More Examples</summary>
 
-- **Easy Integration:** Simple API for creating and sending Discord webhook messages.
-- **Embed Support:** Build rich embed messages with titles, descriptions, fields, and colors.
-- **Customization:** Control the appearance of your messages with various options.
-- **Lightweight:** Minimalistic design for quick setup and performance.
+#### Sending a Message
 
-## Examples
+```python
+from DisHook import Webhook
 
-Check out the [examples](https://github.com/Daftscientist/DisHook/tree/main/examples) directory for more usage examples.
+webhook = Webhook(url='your_webhook_url_here')
+webhook.send(content='Hello, world!')
+```
 
-## Contributing
+#### Using Embeds
 
-Contributions are welcome! Please feel free to submit issues or pull requests.
+```python
+from DisHook import Webhook, Embed
 
-## License
+webhook = Webhook(url='your_webhook_url_here')
+embed = Embed(
+    title='Sample Embed',
+    description='This is an example embed.',
+    color=0x00FF00
+)
+embed.add_field(name='Field 1', value='Some value')
+embed.add_field(name='Field 2', value='Another value')
+webhook.send(embed=embed)
+```
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Daftscientist/DisHook/blob/main/LICENSE) file for details.
+</details>
+
+For more usage examples, check out the [examples](examples) directory.
+
+## Contributing 🤝
+
+Contributions are welcome! Please feel free to submit issues or pull requests. For major changes, please open an issue first to discuss what you would like to change.
+
+## License 📜
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## About 👨‍💻
+
+DisHook is a small, lightweight Discord webhook API wrapper created with Python by Daftscientist.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![License](https://img.shields.io/github/license/Daftscientist/DisHook?style=for-the-badge)
