@@ -33,8 +33,8 @@ webhook.send()
 <details>
     <summary>Embeds</summary>
 
-	()[simple.py]
- 
+[embeds.py](https://github.com/Daftscientist/DisHook/blob/main/examples/embeds.py)
+
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
 
@@ -45,7 +45,8 @@ webhook.set_content("This message has an attached embed!")
 my_embed = Embed(
     title="Embed Title",
     description="This is an embedded message.",
-    color=0x00ff00, thumbnail=EmbedThumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+    color=0x00ff00,
+    thumbnail=EmbedThumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
 )
 
 my_embed.add_field(name="Field 1", value="Value 1")
@@ -57,12 +58,11 @@ webhook.send()
 
 </details>
 
-
 <details>
     <summary>Polls</summary>
 
-	()[polls.py]
- 
+[polls.py](https://github.com/Daftscientist/DisHook/blob/main/examples/polls.py)
+
 ```python
 from DisHook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
 
@@ -93,35 +93,34 @@ webhook.send()
 <details>
     <summary>Mentions</summary>
 
-	()[mentions.py]
+[mentions.py](https://github.com/Daftscientist/DisHook/blob/main/examples/mentions.py)
 
-	```python
-	from DisHook import Webhook, AllowedMentions
+```python
+from DisHook import Webhook, AllowedMentions
 
 webhook = Webhook("https://discord.webhook.url")
 
 webhook.set_content("Lets test out the mentions system! <@1248973121864601694>")
 
-
 webhook.set_allowed_mentions(
     AllowedMentions(
         users=[1248973121864601694], # Allows the mention to this specific user to take effect
-        replied_user=False ## Allows the mention to the replied user to take effect
+        replied_user=False # Allows the mention to the replied user to take effect
     )
 )
 
 webhook.send()
-	```
+```
 
 </details>
 
 <details>
     <summary>Components</summary>
 
-	()[components.py]
- 
-	```python
-	from DisHook import Webhook, ActionRow, Button
+[components.py](https://github.com/Daftscientist/DisHook/blob/main/examples/components.py)
+
+```python
+from DisHook import Webhook, ActionRow, Button
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -143,6 +142,8 @@ webhook.add_component(my_action_row)
 
 webhook.send()
 ```
+
+</details>
 
 For more usage examples, check out the [examples](examples) directory.
 
