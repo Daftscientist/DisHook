@@ -32,7 +32,9 @@ webhook.send()
 
 <details>
     <summary>Embeds</summary>
+
 	()[simple.py]
+ 
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
 
@@ -52,10 +54,15 @@ webhook.add_embed(my_embed)
 
 webhook.send()
 ```
+
 </details>
+
+
 <details>
     <summary>Polls</summary>
+
 	()[polls.py]
+ 
 ```python
 from DisHook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
 
@@ -80,10 +87,14 @@ webhook.add_poll(my_poll)
 
 webhook.send()
 ```
+
 </details>
+
 <details>
     <summary>Mentions</summary>
+
 	()[mentions.py]
+
 	```python
 	from DisHook import Webhook, AllowedMentions
 
@@ -101,10 +112,14 @@ webhook.set_allowed_mentions(
 
 webhook.send()
 	```
+
 </details>
+
 <details>
     <summary>Components</summary>
+
 	()[components.py]
+ 
 	```python
 	from DisHook import Webhook, ActionRow, Button
 
