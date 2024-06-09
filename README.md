@@ -45,31 +45,9 @@ webhook.send(embed)
 ```
 
 <details>
-  <summary>More Examples</summary>
-
-#### Sending a Message
-
+    <summary>#### More Examples</summary>
 ```python
-from DisHook import Webhook
-
-webhook = Webhook(url='your_webhook_url_here')
-webhook.send(content='Hello, world!')
-```
-
-#### Using Embeds
-
-```python
-from DisHook import Webhook, Embed
-
-webhook = Webhook(url='your_webhook_url_here')
-embed = Embed(
-    title='Sample Embed',
-    description='This is an example embed.',
-    color=0x00FF00
-)
-embed.add_field(name='Field 1', value='Some value')
-embed.add_field(name='Field 2', value='Another value')
-webhook.send(embed=embed)
+    python
 ```
 
 </details>
