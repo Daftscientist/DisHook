@@ -31,7 +31,14 @@ webhook.send()
 ```
 
 <details>
-    <summary>[Embeds](https://github.com/Daftscientist/DisHook/blob/main/examples/embeds.py)</summary>
+
+    <summary>
+        
+        [Embeds](https://github.com/Daftscientist/DisHook/blob/main/examples/embeds.py)
+    
+    </summary>
+
+
 
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
