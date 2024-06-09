@@ -31,9 +31,7 @@ webhook.send()
 ```
 
 <details>
-    <summary>Embeds</summary>
-
-[embeds.py](https://github.com/Daftscientist/DisHook/blob/main/examples/embeds.py)
+    <summary>[Embeds](https://github.com/Daftscientist/DisHook/blob/main/examples/embeds.py)</summary>
 
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
@@ -59,9 +57,7 @@ webhook.send()
 </details>
 
 <details>
-    <summary>Polls</summary>
-
-[polls.py](https://github.com/Daftscientist/DisHook/blob/main/examples/polls.py)
+    <summary>[Polls](https://github.com/Daftscientist/DisHook/blob/main/examples/polls.py)</summary>
 
 ```python
 from DisHook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
@@ -91,9 +87,7 @@ webhook.send()
 </details>
 
 <details>
-    <summary>Mentions</summary>
-
-[mentions.py](https://github.com/Daftscientist/DisHook/blob/main/examples/mentions.py)
+    <summary>[Mentions](https://github.com/Daftscientist/DisHook/blob/main/examples/mentions.py)</summary>
 
 ```python
 from DisHook import Webhook, AllowedMentions
@@ -115,9 +109,7 @@ webhook.send()
 </details>
 
 <details>
-    <summary>Components</summary>
-
-[components.py](https://github.com/Daftscientist/DisHook/blob/main/examples/components.py)
+    <summary>[Components](https://github.com/Daftscientist/DisHook/blob/main/examples/components.py)</summary>
 
 ```python
 from DisHook import Webhook, ActionRow, Button
