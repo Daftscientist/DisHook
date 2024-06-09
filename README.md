@@ -55,7 +55,9 @@ webhook.send()
 ```
 
 </details>
+
 ---
+
 <details>
     <summary>Polls</summary>
 
