@@ -58,7 +58,7 @@ webhook.send()
 
 ---
 
-<details>
+<details open>
     <summary>Polls</summary>
 
 ```python
