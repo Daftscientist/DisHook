@@ -32,6 +32,7 @@ webhook.send()
 
 <details>
     <summary>Embed</summary>
+    ---
 
 ```python
 from DisHook import Webhook, Embed, EmbedThumbnail
