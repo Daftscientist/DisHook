@@ -21,36 +21,113 @@ pip install git+https://github.com/Daftscientist/DisHook.git
 
 ## Usage 🛠️
 
-### Simple Example
-
 ```python
-from DisHook import Webhook, Embed
+from DisHook import Webhook
 
-# Initialize webhook
-webhook = Webhook(url='your_webhook_url_here')
+webhook = Webhook("https://discord.webhook.url")
+webhook.set_content("Hello, world!")
 
-# Create an embed object
-embed = Embed(
-    title='Embed Title',
-    description='Embed Description',
-    color=0xFF5733
-)
-
-# Add fields to the embed
-embed.add_field(name='Field 1', value='Value 1')
-embed.add_field(name='Field 2', value='Value 2')
-
-# Send the embed to the webhook
-webhook.send(embed)
+webhook.send()
 ```
 
 <details>
-    <summary>#### More Examples</summary>
+    <summary>Embeds</summary>
+	()[simple.py]
 ```python
-    python
-```
+from DisHook import Webhook, Embed, EmbedThumbnail
 
+webhook = Webhook("https://discord.webhook.url")
+
+webhook.set_content("This message has an attached embed!")
+
+my_embed = Embed(
+    title="Embed Title",
+    description="This is an embedded message.",
+    color=0x00ff00, thumbnail=EmbedThumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+)
+
+my_embed.add_field(name="Field 1", value="Value 1")
+
+webhook.add_embed(my_embed)
+
+webhook.send()
+```
 </details>
+<details>
+    <summary>Polls</summary>
+	()[polls.py]
+```python
+from DisHook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
+
+webhook = Webhook("https://discord.webhook.url")
+
+webhook.set_content("A poll is attached!")
+
+my_poll = Poll(
+    question=PollMedia("What is your favorite color?"),
+    duration=3,
+    allow_multiselect=False,
+)
+
+my_poll.add_answer(PollMedia("Red", PartialEmoji(name="🟥")))
+my_poll.add_answer(PollMedia("Green", PartialEmoji(name="🟩")))
+my_poll.add_answer(PollMedia("Blue", PartialEmoji(name="🟦")))
+my_poll.add_answer(PollMedia("Yellow", PartialEmoji(name="🟨")))
+my_poll.add_answer(PollMedia("Other", PartialEmoji(name="❓")))
+my_poll.add_answer(PollMedia("I don't know", PartialEmoji(name="🤷")))
+
+webhook.add_poll(my_poll)
+
+webhook.send()
+```
+</details>
+<details>
+    <summary>Mentions</summary>
+	()[mentions.py]
+	```python
+	from DisHook import Webhook, AllowedMentions
+
+webhook = Webhook("https://discord.webhook.url")
+
+webhook.set_content("Lets test out the mentions system! <@1248973121864601694>")
+
+
+webhook.set_allowed_mentions(
+    AllowedMentions(
+        users=[1248973121864601694], # Allows the mention to this specific user to take effect
+        replied_user=False ## Allows the mention to the replied user to take effect
+    )
+)
+
+webhook.send()
+	```
+</details>
+<details>
+    <summary>Components</summary>
+	()[components.py]
+	```python
+	from DisHook import Webhook, ActionRow, Button
+
+webhook = Webhook("https://discord.webhook.url")
+
+webhook.set_content("This message has an attached action row! It even has a button!")
+
+""" Components will only function if the webhook has been created by an application. Meaning created by a bot."""
+
+my_button = Button(
+    label="Click me!",
+    style=1,
+    custom_id="button1"
+)
+
+my_action_row = ActionRow(
+    components=[my_button]
+)
+
+webhook.add_component(my_action_row)
+
+webhook.send()
+```
 
 For more usage examples, check out the [examples](examples) directory.
 
