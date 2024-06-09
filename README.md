@@ -6,10 +6,11 @@ DisHook is a small, lightweight Python package for creating and managing Discord
 
 ## Features ✨
 
-- **Easy Integration**: Simple API for creating and sending Discord webhook messages.
-- **Embed Support**: Build rich embed messages with titles, descriptions, fields, and colors.
-- **Customization**: Control the appearance of your messages with various options.
-- **Lightweight**: Minimalistic design for quick setup and performance.
+- **User-Friendly Integration**: Simple API for creating and sending Discord webhook messages.
+- **Rich Embed Support**: Build visually appealing messages with titles, descriptions, fields, and colors.
+- **Polling Functionality**: Conduct polls with various options and durations.
+- **Interactive Components**: Add buttons and other interactive elements to webhook messages.
+- **Efficient Design**: Minimalistic approach ensures quick setup and optimal performance.
 
 ## Installation 🚀
 
