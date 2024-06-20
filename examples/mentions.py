@@ -1,4 +1,4 @@
-from dishook import Webhook, AllowedMentions
+from dishookr import Webhook, AllowedMentions
 
 webhook = Webhook("https://discord.webhook.url")
 

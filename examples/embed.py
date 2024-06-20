@@ -1,4 +1,4 @@
-from dishook import Webhook, Embed, EmbedThumbnail
+from dishookr import Webhook, Embed, EmbedThumbnail
 
 webhook = Webhook("https://discord.webhook.url")
 

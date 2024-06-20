@@ -15,13 +15,13 @@ DisHook is a small, lightweight Python package for creating and managing Discord
 Install DisHook directly from the GitHub repository using pip:
 
 ```bash
-pip install dishook
+pip install dishookr
 ```
 
 ## Usage 🛠️
 
 ```python
-from dishook import Webhook
+from dishookr import Webhook
 
 webhook = Webhook("https://discord.webhook.url")
 webhook.set_content("Hello, world!")
@@ -33,7 +33,7 @@ webhook.send()
     <summary>Embed</summary>
 
 ```python
-from dishook import Webhook, Embed, EmbedThumbnail
+from dishookr import Webhook, Embed, EmbedThumbnail
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -61,7 +61,7 @@ webhook.send()
     <summary>Polls</summary>
 
 ```python
-from dishook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
+from dishookr import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -93,7 +93,7 @@ webhook.send()
     <summary>Mentions</summary>
 
 ```python
-from dishook import Webhook, AllowedMentions
+from dishookr import Webhook, AllowedMentions
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -117,7 +117,7 @@ webhook.send()
     <summary>Components</summary>
 
 ```python
-from dishook import Webhook, ActionRow, Button
+from dishookr import Webhook, ActionRow, Button
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -147,7 +147,7 @@ webhook.send()
 
 ```python
 from vortexkit import App, Request, JSONResponse
-from dishook import InteractionResponse, InteractionCallbackMessage, InteractionResponseType
+from dishookr import InteractionResponse, InteractionCallbackMessage, InteractionResponseType
 
 app = App()
 

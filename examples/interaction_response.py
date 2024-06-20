@@ -1,5 +1,5 @@
 from vortexkit import App, Request, JSONResponse
-from dishook import InteractionResponse, InteractionCallbackMessage, InteractionResponseType
+from dishookr import InteractionResponse, InteractionCallbackMessage, InteractionResponseType
 
 """
     - This is an example of how to use the InteractionResponse class to create an interaction response object that is fully accepted by Discord.

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "dishook"
+name = "dishookr"
 version = "0.1.0"
 description = ""
 authors = ["dafty144 <contact@leojohnston.tech>"]

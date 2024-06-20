@@ -1,4 +1,4 @@
-from dishook import Webhook, ActionRow, Button, ComponentPartialEmoji
+from dishookr import Webhook, ActionRow, Button, ComponentPartialEmoji
 
 webhook = Webhook("https://discord.webhook.url")
 

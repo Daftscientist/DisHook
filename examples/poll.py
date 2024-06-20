@@ -1,4 +1,4 @@
-from dishook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
+from dishookr import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
 
 webhook = Webhook("https://discord.webhook.url")
 

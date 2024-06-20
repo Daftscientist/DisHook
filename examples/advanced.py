@@ -1,4 +1,4 @@
-from dishook import Webhook, Embed, EmbedThumbnail, AllowedMentions, Poll, PollMedia, PartialEmoji, ActionRow, Button
+from dishookr import Webhook, Embed, EmbedThumbnail, AllowedMentions, Poll, PollMedia, PartialEmoji, ActionRow, Button
 
 webhook = Webhook("https://discord.webhook.url")
 
