@@ -2,8 +2,6 @@
 
 DisHook is a small, lightweight Python package for creating and managing Discord webhook messages easily.
 
-![DisHook Logo](https://github.com/Daftscientist/DisHook/raw/main/assets/logo.png)
-
 ## Features ✨
 
 - **User-Friendly Integration**: Simple API for creating and sending Discord webhook messages.
@@ -17,13 +15,13 @@ DisHook is a small, lightweight Python package for creating and managing Discord
 Install DisHook directly from the GitHub repository using pip:
 
 ```bash
-pip install git+https://github.com/Daftscientist/DisHook.git
+pip install dishook
 ```
 
 ## Usage 🛠️
 
 ```python
-from DisHook import Webhook
+from dishook import Webhook
 
 webhook = Webhook("https://discord.webhook.url")
 webhook.set_content("Hello, world!")
@@ -35,7 +33,7 @@ webhook.send()
     <summary>Embed</summary>
 
 ```python
-from DisHook import Webhook, Embed, EmbedThumbnail
+from dishook import Webhook, Embed, EmbedThumbnail
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -63,7 +61,7 @@ webhook.send()
     <summary>Polls</summary>
 
 ```python
-from DisHook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
+from dishook import Webhook, Poll, PartialEmoji, PollMedia, PollAnswer
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -95,7 +93,7 @@ webhook.send()
     <summary>Mentions</summary>
 
 ```python
-from DisHook import Webhook, AllowedMentions
+from dishook import Webhook, AllowedMentions
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -119,7 +117,7 @@ webhook.send()
     <summary>Components</summary>
 
 ```python
-from DisHook import Webhook, ActionRow, Button
+from dishook import Webhook, ActionRow, Button
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -138,6 +136,43 @@ my_action_row = ActionRow(
 webhook.add_component(my_action_row)
 
 webhook.send()
+```
+
+</details>
+
+---
+
+<details>
+    <summary>Interaction Responses</summary>
+
+```python
+from vortexkit import App, Request, JSONResponse
+from dishook import InteractionResponse, InteractionCallbackMessage, InteractionResponseType
+
+app = App()
+
+@app.route("/interaction-callback")
+def interaction_callback(request: Request):
+    if not request.method == "POST":
+        return JSONResponse({"error": "Method not allowed"}, status_code=405)
+    
+    if not request.body["type"] == 3 and not request.body["data"]["custom_id"] == "button1":
+        return JSONResponse({"error": "Invalid interaction type"}, status_code=400)
+    
+    my_dishook_response = InteractionResponse(
+        type=InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data=InteractionCallbackMessage(
+            content="You clicked the button!"
+        )
+    )
+
+    return JSONResponse(
+        my_dishook_response.__dict__()
+    )
+
+
+if __name == '__main__':
+    app.run("0.0.0.0", 8080)
 ```
 
 </details>

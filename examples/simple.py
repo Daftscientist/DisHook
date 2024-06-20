@@ -1,4 +1,4 @@
-from DisHook import Webhook
+from dishook import Webhook
 
 webhook = Webhook("https://discord.webhook.url")
 

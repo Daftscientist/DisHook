@@ -1,19 +1,18 @@
 from typing import List, Optional, Union, Dict
+from dataclasses import dataclass, field
 
+from .emoji import ComponentPartialEmoji
+
+@dataclass
 class Component:
     """
-    Represents a component in a Discord message.
-    """
-    type: int
-
-    def __init__(self, type: int):
-        """
-        Initializes a component.
+        Represents a component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#component-object
 
         Args:
             type (int): The type of the component.
-        """
-        self.type = type
+    """
+    type: int
 
     def __dict__(self) -> Dict[str, Union[int]]:
         """
@@ -26,22 +25,17 @@ class Component:
             "type": self.type
         }
 
-
+@dataclass
 class ActionRow(Component):
     """
-    Represents an Action Row component in a Discord message.
-    """
-    components: List[Union['Button', 'StringSelect', 'TextInput', 'UserSelect', 'RoleSelect', 'MentionableSelect', 'ChannelSelect']]
-
-    def __init__(self, components: List[Union['Button', 'StringSelect', 'TextInput', 'UserSelect', 'RoleSelect', 'MentionableSelect', 'ChannelSelect']]):
-        """
-        Initializes an Action Row component.
+        Represents an Action Row component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#action-row-object
 
         Args:
             components (List[Union['Button', 'StringSelect', 'TextInput', 'UserSelect', 'RoleSelect', 'MentionableSelect', 'ChannelSelect']]): The components within the Action Row.
-        """
-        super().__init__(type=1)
-        self.components = components
+    """
+    components: List[Union['Button', 'StringSelect', 'TextInput', 'UserSelect', 'RoleSelect', 'MentionableSelect', 'ChannelSelect']]
+    type: int = field(init=False, default=1)
 
     def __dict__(self) -> Dict[str, Union[int, List]]:
         """
@@ -55,38 +49,27 @@ class ActionRow(Component):
             "components": [component.__dict__() for component in self.components]
         }
 
-
+@dataclass
 class Button(Component):
     """
-    Represents a Button component in a Discord message.
-    """
-    style: int
-    label: Optional[str]
-    emoji: Optional[Dict[str, Union[str, int]]]
-    custom_id: Optional[str]
-    url: Optional[str]
-    disabled: Optional[bool]
-
-    def __init__(self, style: int, custom_id: Optional[str] = None, label: Optional[str] = None,
-                 emoji: Optional[Dict[str, Union[str, int]]] = None, url: Optional[str] = None, disabled: Optional[bool] = False):
-        """
-        Initializes a Button component.
+        Represents a Button component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#button-object
 
         Args:
             style (int): The style of the button.
             custom_id (Optional[str]): The custom identifier for the button.
             label (Optional[str]): The label text for the button.
-            emoji (Optional[Dict[str, Union[str, int]]]): The emoji for the button.
+            emoji (Optional[ComponentPartialEmoji]): The emoji for the button.
             url (Optional[str]): The URL for the button (if style is Link).
             disabled (Optional[bool]): Whether the button is disabled. Defaults to False.
-        """
-        super().__init__(type=2)
-        self.style = style
-        self.label = label
-        self.emoji = emoji
-        self.custom_id = custom_id
-        self.url = url
-        self.disabled = disabled
+    """
+    style: int
+    label: Optional[str] = None
+    emoji: Optional[ComponentPartialEmoji] = None
+    custom_id: Optional[str] = None
+    url: Optional[str] = None
+    disabled: Optional[bool] = None
+    type: int = field(init=False, default=2)
 
     def __dict__(self) -> Dict[str, Union[int, Optional[str], Optional[Dict[str, Union[str, int]]], Optional[bool]]]:
         """
@@ -104,25 +87,14 @@ class Button(Component):
             "disabled": self.disabled
         }
         if self.emoji:
-            button_dict["emoji"] = self.emoji
+            button_dict["emoji"] = self.emoji.__dict__()
         return button_dict
 
-
+@dataclass
 class StringSelect(Component):
     """
-    Represents a String Select component in a Discord message.
-    """
-    custom_id: str
-    options: List[Dict[str, Union[str, int]]]
-    placeholder: Optional[str]
-    min_values: Optional[int]
-    max_values: Optional[int]
-    disabled: Optional[bool]
-
-    def __init__(self, custom_id: str, options: List[Dict[str, Union[str, int]]], placeholder: Optional[str] = None,
-                 min_values: Optional[int] = None, max_values: Optional[int] = None, disabled: Optional[bool] = False):
-        """
-        Initializes a String Select component.
+        Represents a String Select component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#select-menu-object
 
         Args:
             custom_id (str): The custom identifier for the select menu.
@@ -131,14 +103,16 @@ class StringSelect(Component):
             min_values (Optional[int]): The minimum number of items that must be chosen.
             max_values (Optional[int]): The maximum number of items that can be chosen.
             disabled (Optional[bool]): Whether the select menu is disabled. Defaults to False.
-        """
+    """
+    custom_id: str
+    options: List[Dict[str, Union[str, int]]]
+    placeholder: Optional[str]
+    min_values: Optional[int]
+    max_values: Optional[int]
+    disabled: Optional[bool]
+
+    def __post_init__(self):
         super().__init__(type=3)
-        self.custom_id = custom_id
-        self.options = options
-        self.placeholder = placeholder
-        self.min_values = min_values
-        self.max_values = max_values
-        self.disabled = disabled
 
     def __dict__(self) -> Dict[str, Union[int, str, List[Dict[str, Union[str, int]]], Optional[bool]]]:
         """
@@ -157,10 +131,21 @@ class StringSelect(Component):
             "disabled": self.disabled
         }
 
-
+@dataclass
 class TextInput(Component):
     """
-    Represents a Text Input component in a Discord message.
+        Represents a Text Input component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#text-input-object
+
+        Args:
+            custom_id (str): The custom identifier for the text input.
+            style (int): The style of the text input.
+            label (str): The label text for the text input.
+            min_length (Optional[int]): The minimum length of the input.
+            max_length (Optional[int]): The maximum length of the input.
+            placeholder (Optional[str]): The placeholder text for the text input.
+            required (Optional[bool]): Whether the text input is required. Defaults to False.
+            value (Optional[str]): The initial value of the text input.
     """
     custom_id: str
     style: int
@@ -171,30 +156,8 @@ class TextInput(Component):
     required: Optional[bool]
     value: Optional[str]
 
-    def __init__(self, custom_id: str, label: str, style: int, min_length: Optional[int] = None, max_length: Optional[int] = None,
-                 placeholder: Optional[str] = None, required: Optional[bool] = None, value: Optional[str] = None):
-        """
-        Initializes a Text Input component.
-
-        Args:
-            custom_id (str): The custom identifier for the text input.
-            label (str): The label text for the text input.
-            style (int): The style of the text input.
-            min_length (Optional[int]): The minimum input length for the text input.
-            max_length (Optional[int]): The maximum input length for the text input.
-            placeholder (Optional[str]): The placeholder text for the text input.
-            required (Optional[bool]): Whether the text input is required.
-            value (Optional[str]): The pre-filled value for the text input.
-        """
+    def __post_init__(self):
         super().__init__(type=4)
-        self.custom_id = custom_id
-        self.style = style
-        self.label = label
-        self.min_length = min_length
-        self.max_length = max_length
-        self.placeholder = placeholder
-        self.required = required
-        self.value = value
 
     def __dict__(self) -> Dict[str, Union[int, str, Optional[int], Optional[str], Optional[bool]]]:
         """
@@ -215,31 +178,25 @@ class TextInput(Component):
             "value": self.value
         }
 
-
+@dataclass
 class UserSelect(Component):
     """
-    Represents a User Select component in a Discord message.
-    """
-    custom_id: str
-    min_values: Optional[int]
-    max_values: Optional[int]
-    disabled: Optional[bool]
-
-    def __init__(self, custom_id: str, min_values: Optional[int] = None, max_values: Optional[int] = None, disabled: Optional[bool] = False):
-        """
-        Initializes a User Select component.
+        Represents a User Select component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#select-menu-object
 
         Args:
             custom_id (str): The custom identifier for the select menu.
             min_values (Optional[int]): The minimum number of users that must be chosen.
             max_values (Optional[int]): The maximum number of users that can be chosen.
             disabled (Optional[bool]): Whether the select menu is disabled. Defaults to False.
-        """
+    """
+    custom_id: str
+    min_values: Optional[int]
+    max_values: Optional[int]
+    disabled: Optional[bool]
+
+    def __post_init__(self):
         super().__init__(type=5)
-        self.custom_id = custom_id
-        self.min_values = min_values
-        self.max_values = max_values
-        self.disabled = disabled
 
     def __dict__(self) -> Dict[str, Union[int, str, Optional[int], Optional[bool]]]:
         """
@@ -256,31 +213,25 @@ class UserSelect(Component):
             "disabled": self.disabled
         }
 
-
+@dataclass
 class RoleSelect(Component):
     """
-    Represents a Role Select component in a Discord message.
-    """
-    custom_id: str
-    min_values: Optional[int]
-    max_values: Optional[int]
-    disabled: Optional[bool]
-
-    def __init__(self, custom_id: str, min_values: Optional[int] = None, max_values: Optional[int] = None, disabled: Optional[bool] = False):
-        """
-        Initializes a Role Select component.
+        Represents a Role Select component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#component-object-component-types
 
         Args:
             custom_id (str): The custom identifier for the select menu.
             min_values (Optional[int]): The minimum number of roles that must be chosen.
             max_values (Optional[int]): The maximum number of roles that can be chosen.
             disabled (Optional[bool]): Whether the select menu is disabled. Defaults to False.
-        """
+    """
+    custom_id: str
+    min_values: Optional[int]
+    max_values: Optional[int]
+    disabled: Optional[bool]
+
+    def __post_init__(self):
         super().__init__(type=6)
-        self.custom_id = custom_id
-        self.min_values = min_values
-        self.max_values = max_values
-        self.disabled = disabled
 
     def __dict__(self) -> Dict[str, Union[int, str, Optional[int], Optional[bool]]]:
         """
@@ -297,31 +248,25 @@ class RoleSelect(Component):
             "disabled": self.disabled
         }
 
-
+@dataclass
 class MentionableSelect(Component):
     """
-    Represents a Mentionable Select component in a Discord message.
-    """
-    custom_id: str
-    min_values: Optional[int]
-    max_values: Optional[int]
-    disabled: Optional[bool]
-
-    def __init__(self, custom_id: str, min_values: Optional[int] = None, max_values: Optional[int] = None, disabled: Optional[bool] = False):
-        """
-        Initializes a Mentionable Select component.
+        Represents a Mentionable Select component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components#select-menu-object
 
         Args:
             custom_id (str): The custom identifier for the select menu.
             min_values (Optional[int]): The minimum number of mentionables that must be chosen.
             max_values (Optional[int]): The maximum number of mentionables that can be chosen.
             disabled (Optional[bool]): Whether the select menu is disabled. Defaults to False.
-        """
+    """
+    custom_id: str
+    min_values: Optional[int]
+    max_values: Optional[int]
+    disabled: Optional[bool]
+
+    def __post_init__(self):
         super().__init__(type=7)
-        self.custom_id = custom_id
-        self.min_values = min_values
-        self.max_values = max_values
-        self.disabled = disabled
 
     def __dict__(self) -> Dict[str, Union[int, str, Optional[int], Optional[bool]]]:
         """
@@ -338,28 +283,23 @@ class MentionableSelect(Component):
             "disabled": self.disabled
         }
 
-
+@dataclass
 class ChannelSelect(Component):
     """
-    Represents a Channel Select component in a Discord message.
-    """
-    custom_id: str
-    channel_types: Optional[List[str]]
-    disabled: Optional[bool]
-
-    def __init__(self, custom_id: str, channel_types: Optional[List[str]] = None, disabled: Optional[bool] = False):
-        """
-        Initializes a Channel Select component.
+        Represents a Channel Select component in a Discord message.
+        - https://discord.com/developers/docs/interactions/message-components
 
         Args:
             custom_id (str): The custom identifier for the select menu.
             channel_types (Optional[List[str]]): The channel types to include in the select menu.
             disabled (Optional[bool]): Whether the select menu is disabled. Defaults to False.
-        """
+    """
+    custom_id: str
+    channel_types: Optional[List[str]]
+    disabled: Optional[bool]
+
+    def __post_init__(self):
         super().__init__(type=8)
-        self.custom_id = custom_id
-        self.channel_types = channel_types
-        self.disabled = disabled
 
     def __dict__(self) -> Dict[str, Union[int, str, Optional[List[str]], Optional[bool]]]:
         """

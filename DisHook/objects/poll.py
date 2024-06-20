@@ -1,5 +1,5 @@
 from typing import List, Optional
-from .emoji import Emoji
+from .emoji import PollMediaPartialEmoji
 from dataclasses import dataclass
 
 @dataclass
@@ -10,10 +10,10 @@ class PollMedia:
 
         Args:
             text (str): The text of the poll media.
-            emoji (Optional[Emoji], optional): The emoji of the poll media. Defaults to None.
+            emoji (Optional[PollMediaPartialEmoji], optional): The emoji of the poll media. Defaults to None.
     """
     text: str
-    emoji: Optional[Emoji]
+    emoji: Optional[PollMediaPartialEmoji]
     
     def __dict__(self):
         """

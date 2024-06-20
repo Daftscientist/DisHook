@@ -154,7 +154,7 @@ class Webhook(object):
             "files": self.files if self.files else None,
             # "payload_json": {},
             # "attachments": [self.file],
-            # "flags": 0,
+            #"flags": self.flags,
             # "applied_tags": "",
             "poll": self.poll.__dict__() if self.poll else None,
         }

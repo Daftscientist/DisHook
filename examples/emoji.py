@@ -1,4 +1,4 @@
-from DisHook import Emoji
+from dishook import Emoji
 
 """
 - This is an example of how to use the Emoji class to create an emoji object that is fully accepted by Discord.

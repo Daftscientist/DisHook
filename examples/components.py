@@ -1,4 +1,4 @@
-from DisHook import Webhook, ActionRow, Button
+from dishook import Webhook, ActionRow, Button, ComponentPartialEmoji
 
 webhook = Webhook("https://discord.webhook.url")
 
@@ -9,7 +9,8 @@ webhook.set_content("This message has an attached action row! It even has a butt
 my_button = Button(
     label="Click me!",
     style=1,
-    custom_id="button1"
+    custom_id="button1",
+    emoji=ComponentPartialEmoji(name="👍")
 )
 
 my_action_row = ActionRow(
