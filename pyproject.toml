@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "dishookr"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["dafty144 <contact@leojohnston.tech>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+requests = "^2.32.3"
 
 
 [build-system]
